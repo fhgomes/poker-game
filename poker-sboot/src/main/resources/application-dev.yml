@@ -6,13 +6,16 @@ spring:
         livereload:
             enabled: true
     security:
+        user:
+            name: admin
+            password: admin
 
 # ===================================================================
 # Logging level configuration
 # ===================================================================
 logging:
     level:
-        root: INFO
+        root: DEBUG
         org:
             hibernate:
                 SQL: INFO
