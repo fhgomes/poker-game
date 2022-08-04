@@ -1,0 +1,39 @@
+# ===================================================================
+# Spring Boot configuration.
+# Poker Gaming
+# ===================================================================
+server:
+    port: 8080
+    servlet:
+        context-path: /poker
+
+spring:
+    application:
+        name: poker-gaming
+
+
+# ===================================================================
+# actuator
+# ===================================================================
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health
+    endpoint:
+        health:
+            show-details: always
+
+# ===================================================================
+# Logging level configuration
+# ===================================================================
+logging:
+    level:
+        root: DEBUG
+        org:
+            hibernate:
+                SQL: DEBUG
+            springframework:
+                security: INFO
+            fernando:
+                gg: DEBUG
