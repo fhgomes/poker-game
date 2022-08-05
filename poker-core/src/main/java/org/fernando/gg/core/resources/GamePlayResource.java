@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/game/{gameRef}/play")
-public class GameDecksManagerResource {
+public class GamePlayResource {
 
 	private final GamePlayService playService;
 
