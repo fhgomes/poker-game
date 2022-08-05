@@ -13,12 +13,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class DeckFactoryTest {
 
 	@InjectMocks
-	DeckFactory deckFactory;
+	DeckFactory target;
 
 	@Test
 	@DisplayName("When create poker deck should return 52 cards")
 	void createPokerDeck() {
-		PokerDeck createdDeck = deckFactory.createPokerDeck();
+		PokerDeck createdDeck = target.createPokerDeck();
 		assertEquals(52, createdDeck.countCards());
 
 	}

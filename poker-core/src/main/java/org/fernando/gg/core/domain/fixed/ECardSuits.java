@@ -1,4 +1,4 @@
-package org.fernando.gg.core.domain;
+package org.fernando.gg.core.domain.fixed;
 
 public enum ECardSuits {
 
