@@ -15,4 +15,11 @@ public class GameCard {
 	public int getCardValue() {
 		return value.getValue();
 	}
+
+	@Override
+	public String toString() {
+		return "GameCard[" + suit.getSymbol() +
+			"-" + value.getVisualKey() +
+			']';
+	}
 }

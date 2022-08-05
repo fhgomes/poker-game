@@ -2,8 +2,12 @@ package org.fernando.gg.core.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpServerErrorException;
 
 @Getter
 public class GameRoom {
@@ -27,12 +31,33 @@ public class GameRoom {
 	}
 
 	public void removePlayer(String playerName) {
-		players.removeIf(player -> player.getPlayerName().equals(playerName));
+		players.removeIf(playerByName(playerName));
 		//TODO what to do if a player quite and the gaming is on going?
 	}
 
 	public void addDeck(CardsDeck cardsDeck) {
 		gameDeckShoe.addDeck(cardsDeck);
-		cardsDeckStats.addDeck(cardsDeck);
+		cardsDeckStats.proccessDeck(cardsDeck);
+	}
+
+	public List<GameCard> dealCards(String playerName, int cardsRequest) {
+		GamePlayer playerByName = players.stream().filter(playerByName(playerName))
+			.findFirst()
+			.orElseThrow(()-> new HttpServerErrorException(HttpStatus.NOT_FOUND, "Player not found in game"));
+
+		List<GameCard> dealtCards = new ArrayList<>();
+		for (int i = 0; i < cardsRequest; i++) {
+			Optional<GameCard> cardCandidate = gameDeckShoe.retrieveCard();
+			cardCandidate.ifPresent(card -> {
+				dealtCards.add(card);
+				playerByName.receiveCard(card);
+				cardsDeckStats.removeCard(card);
+			});
+		}
+		return dealtCards;
+	}
+
+	Predicate<GamePlayer> playerByName(String playerName) {
+		return player -> player.getPlayerName().equals(playerName);
 	}
 }

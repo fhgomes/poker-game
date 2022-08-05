@@ -1,8 +1,13 @@
 package org.fernando.gg.core.services;
 
+import java.util.List;
+import java.util.Random;
+
 import lombok.AllArgsConstructor;
 import org.fernando.gg.core.DeckFactory;
 import org.fernando.gg.core.domain.CardsDeck;
+import org.fernando.gg.core.domain.GameCard;
+import org.fernando.gg.core.domain.GameDeckShoe;
 import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.services.contracts.IGamePlayManager;
 import org.springframework.stereotype.Service;
@@ -22,14 +27,17 @@ public class GamePlayService implements IGamePlayManager {
 	}
 
 	@Override
-	public void dealCards(String gameRef, String playerName, int cardsRequest) {
+	public List<GameCard> dealCards(String gameRef, String playerName, int cardsRequest) {
 		GameRoom gameByRef = gameManager.retrieveGame(gameRef);
-
+		return gameByRef.dealCards(playerName, cardsRequest);
 	}
 
 	@Override
 	public void shuffleCards(String gameRef) {
-		//do nothing for while
+		GameRoom gameByRef = gameManager.retrieveGame(gameRef);
+		GameDeckShoe gameDeckShoe = gameByRef.getGameDeckShoe();
+		gameDeckShoe.shufflePosition();
+
 	}
 
 }
