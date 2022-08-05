@@ -30,8 +30,7 @@ public class GameManagerService implements IGameRoomManager {
 
 	public GameDTO retrieveGame(String gameRef) {
 		Optional<GameRoom> gameByRef = gamesControl.retrieveGame(gameRef);
-		GameRoom gameRoom = gameByRef
-			.orElseThrow(() -> new HttpServerErrorException(HttpStatus.NOT_FOUND, "Game not found"));
+		GameRoom gameRoom = handleExistsGame(gameByRef);
 
 		return gameMapper.toDto(gameRoom);
 	}
@@ -44,13 +43,15 @@ public class GameManagerService implements IGameRoomManager {
 	@Override
 	public void joinGame(String gameRef, String playerName) {
 		Optional<GameRoom> gameByRef = gamesControl.retrieveGame(gameRef);
-		gameByRef.ifPresent(gameRoom -> gameRoom.joinPlayer(playerName));
+		GameRoom gameRoom = handleExistsGame(gameByRef);
+		gameRoom.joinPlayer(playerName);
 	}
 
 	@Override
 	public void leaveGame(String gameRef, String playerName) {
 		Optional<GameRoom> gameByRef = gamesControl.retrieveGame(gameRef);
-		gameByRef.ifPresent(gameRoom -> gameRoom.removePlayer(playerName));
+		GameRoom gameRoom = handleExistsGame(gameByRef);
+		gameRoom.removePlayer(playerName);
 	}
 
 	@Override
@@ -60,11 +61,15 @@ public class GameManagerService implements IGameRoomManager {
 
 	public GameDTO retrieveGameByName(String gameName) {
 		List<GameRoom> gameRooms = gamesControl.retrieveAllGames();
-		GameRoom gameByName = gameRooms.stream()
+		Optional<GameRoom> gameByName = gameRooms.stream()
 			.filter(gameRoom -> gameRoom.getRoomName().equals(gameName))
-			.findFirst()
-			.orElseThrow(() -> new HttpServerErrorException(HttpStatus.NOT_FOUND, "Game not found by name"));
+			.findFirst();
 
-		return gameMapper.toDto(gameByName);
+		return gameMapper.toDto(handleExistsGame(gameByName));
+	}
+
+	private static GameRoom handleExistsGame(Optional<GameRoom> gameOpt) {
+		return gameOpt
+			.orElseThrow(() -> new HttpServerErrorException(HttpStatus.NOT_FOUND, "Game not found"));
 	}
 }
