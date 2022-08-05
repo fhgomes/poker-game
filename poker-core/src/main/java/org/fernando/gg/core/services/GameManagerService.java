@@ -36,11 +36,6 @@ public class GameManagerService implements IGameRoomManager {
 	}
 
 
-	@Override
-	public void addDeckToGame(String gameRef) {
-
-	}
-
 	public GameRoom retrieveGameByName(String gameName) {
 		List<GameRoom> gameRooms = gamesControl.retrieveAllGames();
 		Optional<GameRoom> gameByName = gameRooms.stream()
@@ -50,7 +45,7 @@ public class GameManagerService implements IGameRoomManager {
 		return handleExistsGame(gameByName);
 	}
 
-	private static GameRoom handleExistsGame(Optional<GameRoom> gameOpt) {
+	private GameRoom handleExistsGame(Optional<GameRoom> gameOpt) {
 		return gameOpt
 			.orElseThrow(() -> new HttpServerErrorException(HttpStatus.NOT_FOUND, "Game not found"));
 	}

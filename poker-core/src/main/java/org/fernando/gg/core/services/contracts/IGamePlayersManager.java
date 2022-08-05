@@ -5,4 +5,18 @@ public interface IGamePlayersManager {
 	void joinGame(String gameRef, String playerName);
 	void leaveGame(String gameRef, String playerName);
 
+	/**
+	 * Get the list of cards for a player
+	 */
+	void listCardsOfPlayer(String gameRef, String playerName);
+
+	/**
+	 * Get the list of players in a game along with the total added value of all the cards each
+	 * player holds; use face values of cards only. Then sort the list in descending order, from
+	 * the player with the highest value hand to the player with the lowest value hand:
+	 * ○ For instance if player ‘A’ holds a 10 + King then her total value is 23 and player
+	 * ‘B’ holds a 7 + Queen then his total value is 19, so player ‘A’ will be listed first
+	 * followed by player ‘B
+	 */
+	void listPlayersInGame(String gameRef);
 }

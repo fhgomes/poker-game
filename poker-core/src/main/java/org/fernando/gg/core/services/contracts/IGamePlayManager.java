@@ -3,19 +3,33 @@ package org.fernando.gg.core.services.contracts;
 public interface IGamePlayManager {
 
 	/**
-	 * Get the list of cards for a player
+	 * Add a deck to a game deck
+	 * once a deck has been added to a game deck it cannot be
+	 * removed.
 	 */
-	void listCardsOfPlayer(String gameRef, String playerName);
+	void addDeckToGame(String gameRef);
 
 	/**
-	 * Get the list of players in a game along with the total added value of all the cards each
-	 * player holds; use face values of cards only. Then sort the list in descending order, from
-	 * the player with the highest value hand to the player with the lowest value hand:
-	 * ○ For instance if player ‘A’ holds a 10 + King then her total value is 23 and player
-	 * ‘B’ holds a 7 + Queen then his total value is 19, so player ‘A’ will be listed first
-	 * followed by player ‘B
+	 * Get the count of how many cards per suit are left undealt in the game deck (example: 5
+	 * hearts, 3 spades, etc.
 	 */
-	void listPlayersInGame(String gameRef);
+	int countCardsLeftBySuit(String gameRef);
+	/**
+	 * Get the count of each card (suit and value) remaining in the game deck sorted by suit (
+	 * hearts, spades, clubs, and diamonds) and face value from high value to low value (King,
+	 * Queen, Jack, 10….2, Ace with value of 1)
+	 */
+	int listCardsLeft(String gameRef);
+
+	/**
+	 * Shuffle the game deck (shoe)
+	 * ○ Shuffle returns no value, but results in the cards in the game deck being
+	 * randomly permuted. Please do not use library-provided “shuffle” operations to
+	 * implement this function. You may use library- provided random number
+	 * generators in your solution.
+	 * ○ Shuffle can be called at any time
+	 */
+	void shuffleShoe(String gameRef);
 
 	/**
 	 * Deal cards to a player in a game from the game deck

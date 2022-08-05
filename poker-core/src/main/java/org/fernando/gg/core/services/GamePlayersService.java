@@ -22,4 +22,14 @@ public class GamePlayersService implements IGamePlayersManager {
 		gameByRef.removePlayer(playerName);
 	}
 
+	@Override
+	public void listCardsOfPlayer(String gameRef, String playerName) {
+
+	}
+
+	@Override
+	public void listPlayersInGame(String gameRef) {
+
+	}
+
 }
