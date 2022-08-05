@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import org.fernando.gg.core.domain.GameCard;
 import org.fernando.gg.core.domain.GamePlayer;
 import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.services.contracts.IGamePlayersManager;
@@ -39,8 +40,9 @@ public class GamePlayersService implements IGamePlayersManager {
 	}
 
 	@Override
-	public void listCardsOfPlayer(String gameRef, String playerName) {
-
+	public List<GameCard> listCardsOfPlayer(String gameRef, String playerName) {
+		GameRoom gameByRef = managerService.retrieveGame(gameRef);
+		return gameByRef.listCardsOfPlayer(playerName);
 	}
 
 

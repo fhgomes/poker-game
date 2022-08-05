@@ -2,6 +2,7 @@ package org.fernando.gg.core.services.contracts;
 
 import java.util.List;
 
+import org.fernando.gg.core.domain.GameCard;
 import org.fernando.gg.core.domain.GamePlayer;
 
 public interface IGamePlayersManager {
@@ -24,6 +25,8 @@ public interface IGamePlayersManager {
 
 	/**
 	 * Get the list of cards for a player
+	 *
+	 * @return
 	 */
-	void listCardsOfPlayer(String gameRef, String playerName);
+	List<GameCard> listCardsOfPlayer(String gameRef, String playerName);
 }

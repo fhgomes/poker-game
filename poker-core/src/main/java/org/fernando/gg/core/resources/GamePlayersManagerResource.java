@@ -3,7 +3,9 @@ package org.fernando.gg.core.resources;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
+import org.fernando.gg.core.dto.GameCardDTO;
 import org.fernando.gg.core.dto.GamePlayerHandDTO;
+import org.fernando.gg.core.mappers.GameCardMapper;
 import org.fernando.gg.core.mappers.GamePlayerHandMapper;
 import org.fernando.gg.core.services.GamePlayersService;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ public class GamePlayersManagerResource {
 
 	private final GamePlayersService playersService;
 	private final GamePlayerHandMapper playerHandMapper;
+	private final GameCardMapper gameCardMapper;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -36,6 +39,13 @@ public class GamePlayersManagerResource {
 	public List<GamePlayerHandDTO> list(
 		@PathVariable("gameRef") String gameRef) {
 		return playerHandMapper.toDto(playersService.listPlayersInGame(gameRef));
+	}
+
+	@GetMapping("/{playerName}")
+	public List<GameCardDTO> listCardsOfPlayer(
+		@PathVariable("gameRef") String gameRef,
+		@PathVariable("playerName") String playerName) {
+		return gameCardMapper.toDto(playersService.listCardsOfPlayer(gameRef, playerName));
 	}
 
 	@DeleteMapping("/{playerName}")

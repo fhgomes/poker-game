@@ -57,7 +57,17 @@ public class GameRoom {
 		return dealtCards;
 	}
 
+	public List<GameCard> listCardsOfPlayer(String playerName) {
+		GamePlayer playerByName = players.stream().filter(playerByName(playerName))
+			.findFirst()
+			.orElseThrow(()-> new HttpServerErrorException(HttpStatus.NOT_FOUND, "Player not found in game"));
+
+		return playerByName.getHandCards();
+	}
+
 	Predicate<GamePlayer> playerByName(String playerName) {
 		return player -> player.getPlayerName().equals(playerName);
 	}
+
+
 }
