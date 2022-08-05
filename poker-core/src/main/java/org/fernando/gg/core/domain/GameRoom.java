@@ -41,7 +41,7 @@ public class GameRoom {
 
 	public void addDeck(CardsDeck cardsDeck) {
 		gameDeckShoe.addDeck(cardsDeck);
-		cardsDeckStats.proccessDeck(cardsDeck);
+		cardsDeckStats.processDeck(cardsDeck);
 	}
 
 	public List<GameCard> dealCards(String playerName, int cardsRequest) {

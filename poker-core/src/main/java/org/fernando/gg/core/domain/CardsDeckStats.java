@@ -23,7 +23,7 @@ public class CardsDeckStats {
 	public int countByGameCard(ECardSuits suit, EPokerCardValues value) {
 		return getSuitAndValue(getHashCardKey(suit, value));
 	}
-	public void proccessDeck(CardsDeck cardsDeck) {
+	public void processDeck(CardsDeck cardsDeck) {
 		cardsDeck.getCards().forEach(this::addCard);
 	}
 
