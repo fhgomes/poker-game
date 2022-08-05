@@ -1,6 +1,9 @@
 package org.fernando.gg.core.services;
 
 import lombok.AllArgsConstructor;
+import org.fernando.gg.core.DeckFactory;
+import org.fernando.gg.core.domain.GameRoom;
+import org.fernando.gg.core.domain.PokerDeck;
 import org.fernando.gg.core.services.contracts.IGamePlayManager;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +11,23 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class GamePlayService implements IGamePlayManager {
 
-	private final GameManagerService gamesControl;
+	private final GameManagerService gameManager;
+	private final DeckFactory deckFactory;
 
 	@Override
 	public void addDeckToGame(String gameRef) {
+		GameRoom gameByRef = gameManager.retrieveGame(gameRef);
+		PokerDeck pokerDeck = deckFactory.createPokerDeck();
+		gameByRef.addDeck(pokerDeck);
+	}
+
+	@Override
+	public void dealCards(String gameRef, String playerName, int cardsRequest) {
+
+	}
+
+	@Override
+	public void shuffleShoe(String gameRef) {
 
 	}
 
@@ -25,13 +41,4 @@ public class GamePlayService implements IGamePlayManager {
 		return 0;
 	}
 
-	@Override
-	public void shuffleShoe(String gameRef) {
-
-	}
-
-	@Override
-	public void dealCards(String gameRef, String playerName, int cardsRequest) {
-
-	}
 }

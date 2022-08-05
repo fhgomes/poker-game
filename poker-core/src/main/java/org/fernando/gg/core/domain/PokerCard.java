@@ -11,4 +11,8 @@ public class PokerCard {
 
 	private ECardSuits suit;
 	private EPokerCardValues value;
+
+	public int getCardValue() {
+		return value.getValue();
+	}
 }
