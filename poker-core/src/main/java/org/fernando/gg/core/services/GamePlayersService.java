@@ -34,7 +34,7 @@ public class GamePlayersService implements IGamePlayersManager {
 		GameRoom gameByRef = managerService.retrieveGame(gameRef);
 		Comparator<GamePlayer> compareHands = Comparator.comparingInt(GamePlayer::getHandValue).reversed();
 		List<GamePlayer> sortedByHand = new ArrayList<>(gameByRef.getPlayers());
-		Collections.sort(sortedByHand,compareHands);
+		Collections.sort(sortedByHand, compareHands);
 
 		return sortedByHand;
 	}

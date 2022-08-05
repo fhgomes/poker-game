@@ -1,12 +1,15 @@
 package org.fernando.gg.core.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
 import org.fernando.gg.core.DeckFactory;
 import org.fernando.gg.core.domain.CardsDeckStats;
 import org.fernando.gg.core.domain.GameCard;
+import org.fernando.gg.core.domain.GamePlayer;
 import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.domain.fixed.ECardSuits;
 import org.fernando.gg.core.dto.CardSuitAndValueCountDTO;
@@ -41,15 +44,17 @@ public class GameStatsService implements IGameStatsManager {
 		CardsDeckStats deckStats = gameByRef.getCardsDeckStats();
 
 		return CardSuitAndValueCountDTO.builder()
-			.countHearts(getCountOf(ECardSuits.HEART, deckStats))
-			.countSpades(getCountOf(ECardSuits.SPADE, deckStats))
-			.countClubs(getCountOf(ECardSuits.CLUB, deckStats))
-			.countDiamonds(getCountOf(ECardSuits.DIAMOND, deckStats))
+			.countHearts(listCountOf(ECardSuits.HEART, deckStats))
+			.countSpades(listCountOf(ECardSuits.SPADE, deckStats))
+			.countClubs(listCountOf(ECardSuits.CLUB, deckStats))
+			.countDiamonds(listCountOf(ECardSuits.DIAMOND, deckStats))
 			.build();
 	}
 
-	private List<CardValueCountDTO> getCountOf(ECardSuits suit, CardsDeckStats deckStats) {
+	private List<CardValueCountDTO> listCountOf(ECardSuits suit, CardsDeckStats deckStats) {
 		List<GameCard> gameCards = deckFactory.listCardsBySuit(suit);
+		Comparator<GameCard> compareCardValue = Comparator.comparingInt(GameCard::getCardValue).reversed();
+		Collections.sort(gameCards, compareCardValue);
 		List<CardValueCountDTO> suitGroup = new ArrayList<>();
 		gameCards.forEach(card -> addCountToGroup(suitGroup, deckStats, card));
 		return suitGroup;
