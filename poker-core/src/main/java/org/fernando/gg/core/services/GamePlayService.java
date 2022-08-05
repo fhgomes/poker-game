@@ -3,7 +3,7 @@ package org.fernando.gg.core.services;
 import lombok.AllArgsConstructor;
 import org.fernando.gg.core.DeckFactory;
 import org.fernando.gg.core.domain.GameRoom;
-import org.fernando.gg.core.domain.PokerDeck;
+import org.fernando.gg.core.domain.CardsDeck;
 import org.fernando.gg.core.services.contracts.IGamePlayManager;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class GamePlayService implements IGamePlayManager {
 	@Override
 	public void addDeckToGame(String gameRef) {
 		GameRoom gameByRef = gameManager.retrieveGame(gameRef);
-		PokerDeck pokerDeck = deckFactory.createPokerDeck();
-		gameByRef.addDeck(pokerDeck);
+		CardsDeck cardsDeck = deckFactory.createPokerDeck();
+		gameByRef.addDeck(cardsDeck);
 	}
 
 	@Override

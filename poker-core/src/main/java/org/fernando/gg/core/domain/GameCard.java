@@ -7,7 +7,7 @@ import org.fernando.gg.core.domain.fixed.EPokerCardValues;
 
 @AllArgsConstructor
 @Getter
-public class PokerCard {
+public class GameCard {
 
 	private ECardSuits suit;
 	private EPokerCardValues value;

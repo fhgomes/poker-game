@@ -26,7 +26,7 @@ public class GameRoom {
 		players.remove(playerName);
 	}
 
-	public void addDeck(PokerDeck pokerDeck) {
-
+	public void addDeck(CardsDeck cardsDeck) {
+		gameDeck.addDeck(cardsDeck);
 	}
 }

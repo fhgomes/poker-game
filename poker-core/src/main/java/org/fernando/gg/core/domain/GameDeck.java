@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameDeck {
-	private final List<PokerDeck> currentDecks;
-
+	private final List<CardsDeck> currentDecks;
 
 	public GameDeck() {
 		currentDecks = new ArrayList<>();
 	}
 
-	public void addDeck(PokerDeck newDeck) {
+	public void addDeck(CardsDeck newDeck) {
 		currentDecks.add(newDeck);
 	}
 }

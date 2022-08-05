@@ -2,11 +2,11 @@ package org.fernando.gg.core.domain;
 
 import java.util.List;
 
-public class PokerDeck {
+public class CardsDeck {
 
-	private final List<PokerCard> cards;
+	private final List<GameCard> cards;
 
-	public PokerDeck(List<PokerCard> cards) {
+	public CardsDeck(List<GameCard> cards) {
 		this.cards = cards;
 	}
 
