@@ -1,0 +1,25 @@
+spring:
+    #        include: swagger
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: true
+    security:
+        user:
+            name: admin
+            password: admin
+
+# ===================================================================
+# Logging level configuration
+# ===================================================================
+logging:
+    level:
+        root: INFO
+        org:
+            hibernate:
+                SQL: INFO
+            springframework:
+                security: INFO
+            fernando:
+                gg: INFO
