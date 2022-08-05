@@ -1,6 +1,6 @@
 package org.fernando.gg.core.services.contracts;
 
-public interface IGameManager {
+public interface IGamePlayManager {
 
 	/**
 	 * Get the list of cards for a player

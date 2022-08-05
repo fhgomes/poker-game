@@ -2,6 +2,7 @@ package org.fernando.gg.core.resources;
 
 import lombok.RequiredArgsConstructor;
 import org.fernando.gg.core.services.GameManagerService;
+import org.fernando.gg.core.services.GamePlayersService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,21 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/game/{gameRef}/players")
 public class GamePlayersManagerResource {
 
-	private final GameManagerService managerService;
+	private final GamePlayersService playersService;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void joinGame(
 		@PathVariable("gameRef") String gameRef,
 		@RequestBody String playerName) {
-		managerService.joinGame(gameRef, playerName);
+		playersService.joinGame(gameRef, playerName);
 	}
 
 	@DeleteMapping("/{playerName}")
 	public void leaveGame(
 		@PathVariable("gameRef") String gameRef,
 		@PathVariable("playerName") String playerName) {
-		managerService.leaveGame(gameRef, playerName);
+		playersService.leaveGame(gameRef, playerName);
 	}
 
 
