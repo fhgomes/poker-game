@@ -1,4 +1,4 @@
-package org.fernando.gg.core;
+package org.fernando.gg.core.resources;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
