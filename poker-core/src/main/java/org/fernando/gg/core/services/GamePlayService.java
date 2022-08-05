@@ -23,12 +23,13 @@ public class GamePlayService implements IGamePlayManager {
 
 	@Override
 	public void dealCards(String gameRef, String playerName, int cardsRequest) {
+		GameRoom gameByRef = gameManager.retrieveGame(gameRef);
 
 	}
 
 	@Override
 	public void shuffleCards(String gameRef) {
-
+		//do nothing for while
 	}
 
 }

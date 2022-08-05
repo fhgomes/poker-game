@@ -9,7 +9,7 @@ import lombok.Getter;
 public class GameRoom {
 	private final String gameRef;
 	private final String roomName;
-	private final List<String> players = new ArrayList<>();
+	private final List<GamePlayer> players = new ArrayList<>();
 	private final GameDeckShoe gameDeckShoe;
 	private final CardsDeckStats cardsDeckStats;
 
@@ -21,12 +21,13 @@ public class GameRoom {
 	}
 
 	public void joinPlayer(String playerName) {
-		players.add(playerName);
+		players.add(new GamePlayer(playerName));
 		//TODO not allow to joing after start
+		//TODO not allow to joing same playername
 	}
 
 	public void removePlayer(String playerName) {
-		players.remove(playerName);
+		players.removeIf(player -> player.getPlayerName().equals(playerName));
 		//TODO what to do if a player quite and the gaming is on going?
 	}
 

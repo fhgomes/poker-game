@@ -1,6 +1,7 @@
 package org.fernando.gg.core.resources;
 
 import lombok.RequiredArgsConstructor;
+import org.fernando.gg.core.dto.DealCardsDTO;
 import org.fernando.gg.core.services.GamePlayService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,19 @@ public class GamePlayResource {
 	public void addPokerDeck(
 		@PathVariable("gameRef") String gameRef) {
 		playService.addDeckToGame(gameRef);
+	}
+
+	@PostMapping("decks/shuffle")
+	public void shuffleCards(
+		@PathVariable("gameRef") String gameRef) {
+		playService.shuffleCards(gameRef);
+	}
+
+	@PostMapping("decks/deal")
+	public void dealCards(
+		@PathVariable("gameRef") String gameRef,
+		DealCardsDTO dealCards) {
+		playService.dealCards(gameRef, dealCards.getPlayerName(), dealCards.getQuantity());
 	}
 
 }
