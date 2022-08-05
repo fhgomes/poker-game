@@ -8,7 +8,9 @@ import java.util.stream.Collectors;
 
 import org.fernando.gg.core.domain.GameRoom;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpServerErrorException;
 
 @Component
 @Scope("singleton")
@@ -20,8 +22,14 @@ public class GameInMemoryManager {
 		this.currentGames = new HashMap<>();
 	}
 
-	public void insertGame(String ref, GameRoom game) {
-		currentGames.put(ref, game);
+	public void insertGame(String ref, GameRoom newGame) {
+		currentGames.values().stream()
+			.filter(game -> game.getRoomName().equals(newGame.getRoomName()))
+			.findFirst()
+			.ifPresent(player -> {
+				throw new HttpServerErrorException(HttpStatus.CONFLICT, "GameRoom with this name already exists");
+			});
+		currentGames.put(ref, newGame);
 	}
 
 	public void removeGame(String gameRef) {

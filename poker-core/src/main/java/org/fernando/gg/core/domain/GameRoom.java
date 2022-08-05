@@ -25,9 +25,13 @@ public class GameRoom {
 	}
 
 	public void joinPlayer(String playerName) {
+		players.stream().filter(playerByName(playerName))
+			.findFirst()
+			.ifPresent(player -> {
+				throw new HttpServerErrorException(HttpStatus.CONFLICT, "Player with this name is already in the room");
+			});
 		players.add(new GamePlayer(playerName));
 		//TODO not allow to joing after start
-		//TODO not allow to joing same playername
 	}
 
 	public void removePlayer(String playerName) {
