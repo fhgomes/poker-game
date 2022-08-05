@@ -44,7 +44,4 @@ public class GamePlayersService implements IGamePlayersManager {
 		GameRoom gameByRef = managerService.retrieveGame(gameRef);
 		return gameByRef.listCardsOfPlayer(playerName);
 	}
-
-
-
 }

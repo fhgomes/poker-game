@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.fernando.gg.core.DeckFactory;
 import org.fernando.gg.core.domain.CardsDeckStats;
 import org.fernando.gg.core.domain.GameCard;
-import org.fernando.gg.core.domain.GamePlayer;
 import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.domain.fixed.ECardSuits;
 import org.fernando.gg.core.dto.CardSuitAndValueCountDTO;

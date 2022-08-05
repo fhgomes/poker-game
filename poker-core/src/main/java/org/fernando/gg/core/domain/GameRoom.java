@@ -73,5 +73,4 @@ public class GameRoom {
 		return player -> player.getPlayerName().equals(playerName);
 	}
 
-
 }

@@ -26,6 +26,4 @@ public class CardSuitCountDTO {
 	@JsonProperty("countDiamonds")
 	private int countDiamonds;
 
-
-
 }

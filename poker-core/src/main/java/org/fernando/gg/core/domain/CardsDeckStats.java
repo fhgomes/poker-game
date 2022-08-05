@@ -48,8 +48,7 @@ public class CardsDeckStats {
 	private static String getHashCardKey(ECardSuits suit, EPokerCardValues value) {
 		String suitVisualKey = suit.getVisualKey();
 		String valueVisualKey = value.getVisualKey();
-		String hashKey = suitVisualKey.concat("-").concat(valueVisualKey);
-		return hashKey;
+		return suitVisualKey.concat("-").concat(valueVisualKey);
 	}
 
 	private Integer getSuit(ECardSuits suit) {
@@ -69,6 +68,4 @@ public class CardsDeckStats {
 		int newCountSafe = Math.max(newCount, 0);
 		return totalBySuitAndValue.put(hashKey, newCountSafe);
 	}
-
-
 }

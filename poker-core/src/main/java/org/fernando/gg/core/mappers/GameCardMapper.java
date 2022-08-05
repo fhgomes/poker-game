@@ -1,12 +1,9 @@
 package org.fernando.gg.core.mappers;
 
 import org.fernando.gg.core.domain.GameCard;
-import org.fernando.gg.core.domain.GamePlayer;
-import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.domain.fixed.ECardSuits;
 import org.fernando.gg.core.domain.fixed.EPokerCardValues;
 import org.fernando.gg.core.dto.GameCardDTO;
-import org.fernando.gg.core.dto.GameDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

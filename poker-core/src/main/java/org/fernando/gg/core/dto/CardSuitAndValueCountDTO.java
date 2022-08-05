@@ -28,6 +28,4 @@ public class CardSuitAndValueCountDTO {
 	@JsonProperty("countDiamonds")
 	private List<CardValueCountDTO> countDiamonds;
 
-
-
 }

@@ -34,8 +34,9 @@ public class GameDeckShoe {
 	}
 
 	private void changeCardPosition() {
-		int currPos = new Random().nextInt(currentCards.size() - 1);
-		int newPos = new Random().nextInt(currentCards.size() - 1);
+		Random random = new Random();
+		int currPos = random.nextInt(currentCards.size() - 1);
+		int newPos = random.nextInt(currentCards.size() - 1);
 		GameCard shufflingCard = currentCards.remove(currPos);
 		currentCards.add(newPos, shufflingCard);
 	}

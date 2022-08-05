@@ -1,7 +1,6 @@
 package org.fernando.gg.core.services;
 
 import java.util.List;
-import java.util.Random;
 
 import lombok.AllArgsConstructor;
 import org.fernando.gg.core.DeckFactory;
