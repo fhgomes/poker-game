@@ -14,4 +14,7 @@ So i decide to provide through API just add deck for now
 
 3 - it will be more view request them the play requests
 
+4 - assuming the rule "53rd call" its to not throw an error, and cards are empty.
+Other interpretation can be that a player can't receive more than 52 cards, then it will be other implementation
+
 

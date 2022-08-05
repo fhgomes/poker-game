@@ -1,5 +1,9 @@
 package org.fernando.gg.core.services.contracts;
 
+import java.util.List;
+
+import org.fernando.gg.core.domain.GamePlayer;
+
 public interface IGamePlayersManager {
 
 	void joinGame(String gameRef, String playerName);
@@ -13,8 +17,10 @@ public interface IGamePlayersManager {
 	 * For instance if player ‘A’ holds a 10 + King then her total value is 23 and player
 	 * ‘B’ holds a 7 + Queen then his total value is 19, so player ‘A’ will be listed first
 	 * followed by player ‘B
+	 *
+	 * @return
 	 */
-	void listPlayersInGame(String gameRef);
+	List<GamePlayer> listPlayersInGame(String gameRef);
 
 	/**
 	 * Get the list of cards for a player

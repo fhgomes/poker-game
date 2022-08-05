@@ -1,6 +1,12 @@
 package org.fernando.gg.core.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
+import org.fernando.gg.core.domain.GamePlayer;
 import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.services.contracts.IGamePlayersManager;
 import org.springframework.stereotype.Service;
@@ -23,13 +29,20 @@ public class GamePlayersService implements IGamePlayersManager {
 	}
 
 	@Override
+	public List<GamePlayer> listPlayersInGame(String gameRef) {
+		GameRoom gameByRef = managerService.retrieveGame(gameRef);
+		Comparator<GamePlayer> compareHands = Comparator.comparingInt(GamePlayer::getHandValue).reversed();
+		List<GamePlayer> sortedByHand = new ArrayList<>(gameByRef.getPlayers());
+		Collections.sort(sortedByHand,compareHands);
+
+		return sortedByHand;
+	}
+
+	@Override
 	public void listCardsOfPlayer(String gameRef, String playerName) {
 
 	}
 
-	@Override
-	public void listPlayersInGame(String gameRef) {
 
-	}
 
 }
