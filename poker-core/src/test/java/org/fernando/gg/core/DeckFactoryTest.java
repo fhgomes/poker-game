@@ -10,15 +10,15 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class DeckCreatorTest {
+class DeckFactoryTest {
 
 	@InjectMocks
-	DeckCreator deckCreator;
+	DeckFactory deckFactory;
 
-	@DisplayName("When create poker deck should return 52 cards")
 	@Test
+	@DisplayName("When create poker deck should return 52 cards")
 	void createPokerDeck() {
-		PokerDeck createdDeck = deckCreator.createPokerDeck();
+		PokerDeck createdDeck = deckFactory.createPokerDeck();
 		assertEquals(52, createdDeck.countCards());
 
 	}
