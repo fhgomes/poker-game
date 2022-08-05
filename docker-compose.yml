@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  poker-game:
+    image: fernandosgomes/poker-game
+    ports:
+      - 8081:8081
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+

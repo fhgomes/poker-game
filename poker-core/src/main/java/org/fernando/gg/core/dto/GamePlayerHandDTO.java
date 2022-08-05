@@ -1,7 +1,5 @@
 package org.fernando.gg.core.dto;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,14 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GameDTO {
+public class GamePlayerHandDTO {
 
-	@JsonProperty("gameRef")
-	private String gameRef;
+	@JsonProperty("playerName")
+	private String playerName;
 
-	@JsonProperty("roomName")
-	private String roomName;
-
-	@JsonProperty("players")
-	private List<String> players;
+	@JsonProperty("handValue")
+	private int handValue;
 }

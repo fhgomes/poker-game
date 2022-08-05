@@ -31,15 +31,4 @@ class GameManagerServiceTest {
 		assertDoesNotThrow(() -> target.deleteGame("REF123"));
 	}
 
-	@Test
-	@DisplayName("When given gameRef and player, should join game")
-	void joinGame() {
-		assertDoesNotThrow(() -> target.joinGame("REF123", "Fernando"));
-	}
-
-	@Test
-	@DisplayName("When given gameRef and player, should leave game")
-	void leaveGame() {
-		assertDoesNotThrow(() -> target.leaveGame("REF123", "Fernando"));
-	}
 }
