@@ -30,6 +30,8 @@ Other interpretation can be that a player can't receive more than 52 cards, then
 
 ## Build
 
+> chmod -R +x ./mvnw
+
 > ./mvnw clean install
 
 ## Build Docker Image
