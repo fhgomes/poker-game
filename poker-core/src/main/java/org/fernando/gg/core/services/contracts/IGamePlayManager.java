@@ -1,5 +1,8 @@
 package org.fernando.gg.core.services.contracts;
 
+import org.fernando.gg.core.dto.CardSuitAndValueCountDTO;
+import org.fernando.gg.core.dto.CardSuitCountDTO;
+
 public interface IGamePlayManager {
 
 	/**
@@ -10,18 +13,6 @@ public interface IGamePlayManager {
 	void addDeckToGame(String gameRef);
 
 	/**
-	 * Get the count of how many cards per suit are left undealt in the game deck (example: 5
-	 * hearts, 3 spades, etc.
-	 */
-	int countCardsLeftBySuit(String gameRef);
-	/**
-	 * Get the count of each card (suit and value) remaining in the game deck sorted by suit (
-	 * hearts, spades, clubs, and diamonds) and face value from high value to low value (King,
-	 * Queen, Jack, 10….2, Ace with value of 1)
-	 */
-	int listCardsLeft(String gameRef);
-
-	/**
 	 * Shuffle the game deck (shoe)
 	 * ○ Shuffle returns no value, but results in the cards in the game deck being
 	 * randomly permuted. Please do not use library-provided “shuffle” operations to
@@ -29,7 +20,7 @@ public interface IGamePlayManager {
 	 * generators in your solution.
 	 * ○ Shuffle can be called at any time
 	 */
-	void shuffleShoe(String gameRef);
+	void shuffleCards(String gameRef);
 
 	/**
 	 * Deal cards to a player in a game from the game deck

@@ -10,23 +10,28 @@ public class GameRoom {
 	private final String gameRef;
 	private final String roomName;
 	private final List<String> players = new ArrayList<>();
-	private final GameDeck gameDeck;
+	private final GameDeckShoe gameDeckShoe;
+	private final CardsDeckStats cardsDeckStats;
 
 	public GameRoom(String gameRef, String roomName) {
 		this.gameRef = gameRef;
 		this.roomName = roomName;
-		this.gameDeck = new GameDeck();
+		this.gameDeckShoe = new GameDeckShoe();
+		this.cardsDeckStats = new CardsDeckStats();
 	}
 
 	public void joinPlayer(String playerName) {
 		players.add(playerName);
+		//TODO not allow to joing after start
 	}
 
 	public void removePlayer(String playerName) {
 		players.remove(playerName);
+		//TODO what to do if a player quite and the gaming is on going?
 	}
 
 	public void addDeck(CardsDeck cardsDeck) {
-		gameDeck.addDeck(cardsDeck);
+		gameDeckShoe.addDeck(cardsDeck);
+		cardsDeckStats.addDeck(cardsDeck);
 	}
 }

@@ -16,7 +16,7 @@ public class GamePlayResource {
 
 	private final GamePlayService playService;
 
-	@PostMapping("deck/add")
+	@PostMapping("decks/add")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void addPokerDeck(
 		@PathVariable("gameRef") String gameRef) {

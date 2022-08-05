@@ -13,4 +13,8 @@ public class CardsDeck {
 	public int countCards() {
 		return cards.size();
 	}
+
+	public List<GameCard> getCards() {
+		return cards;
+	}
 }

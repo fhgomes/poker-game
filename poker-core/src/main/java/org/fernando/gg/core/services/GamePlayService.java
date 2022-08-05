@@ -2,8 +2,8 @@ package org.fernando.gg.core.services;
 
 import lombok.AllArgsConstructor;
 import org.fernando.gg.core.DeckFactory;
-import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.domain.CardsDeck;
+import org.fernando.gg.core.domain.GameRoom;
 import org.fernando.gg.core.services.contracts.IGamePlayManager;
 import org.springframework.stereotype.Service;
 
@@ -27,18 +27,8 @@ public class GamePlayService implements IGamePlayManager {
 	}
 
 	@Override
-	public void shuffleShoe(String gameRef) {
+	public void shuffleCards(String gameRef) {
 
-	}
-
-	@Override
-	public int countCardsLeftBySuit(String gameRef) {
-		return 0;
-	}
-
-	@Override
-	public int listCardsLeft(String gameRef) {
-		return 0;
 	}
 
 }
