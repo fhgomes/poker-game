@@ -1,5 +1,5 @@
-[![Build Status Dev](https://travis-ci.com/fhgomes/poker-game.svg?branch=develop)](https://travis-ci.com/fhgomes/poker-game)
-[![Build Status Master](https://travis-ci.com/fhgomes/poker-game.svg?branch=develop)](https://travis-ci.com/fhgomes/poker-game)
+[![Build Status](https://app.travis-ci.com/fhgomes/poker-game.svg?branch=main)](https://app.travis-ci.com/fhgomes/poker-game)
+[![Build Status Dev](https://app.travis-ci.com/fhgomes/poker-game.svg?branch=develop)](https://app.travis-ci.com/fhgomes/poker-game)
 
 # poker-game
 
